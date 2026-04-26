@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C360N - عبدالعزيز العاصي القابضة</title>
+    <!-- مكتبات خارجية -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
+        
+        :root {
+            --primary: #0284c7;
+            --primary-dark: #075985;
+        }
+
+        body { 
+            font-family: 'Tajawal', sans-serif; 
+            overflow-x: hidden;
+        }
+
+        .chart-container { 
+            position: relative; 
+            width: 100%; 
+            max-width: 600px; 
+            margin: auto; 
+            height: 300px; 
+            max-height: 400px;
+        }
+
+        .feature-card { 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            border: 1px solid #f1f5f9; 
+        }
+
+        .feature-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #e2e8f0;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        .ltr-text { direction: ltr; display: inline-block; }
+        
+        .logo-img { 
+            height: 45px; 
+            width: auto; 
+            object-fit: contain; 
+        }
+
+        /* تحسينات الاستجابة للهواتف */
+        @media (max-width: 768px) {
+            .chart-container { height: 250px; }
+            h1 { font-size: 2.5rem !important; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between h-16 items-center">
+            <div class="flex items-center gap-3">
+                <img src="https://i.ibb.co/93vmymGb/image.png" alt="شعار عبدالعزيز العاصي القابضة" class="logo-img" onerror="this.src='https://via.placeholder.com/150x50?text=LOGO'">
+                <div class="flex flex-col border-r border-slate-200 pr-3">
+                    <span class="font-black text-xl text-sky-700 leading-none">C360N</span>
+                    <span class="text-[10px] text-slate-500 font-bold">عبدالعزيز العاصي القابضة</span>
+                </div>
+            </div>
+            <div class="hidden md:flex space-x-6 space-x-reverse text-sm font-bold">
+                <a href="#dashboard" class="hover:text-sky-600 transition-colors">الأداء</a>
+                <a href="#tech" class="hover:text-sky-600 transition-colors">المواصفات</a>
+                <a href="#warranty" class="hover:text-sky-600 transition-colors">الضمان</a>
+                <a href="#contact" class="hover:text-sky-600 transition-colors">تواصل معنا</a>
+            </div>
+            <div class="md:hidden">
+                <button class="text-slate-600" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    ☰
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 p-4 space-y-3 font-bold text-center">
+            <a href="#dashboard" class="block text-slate-600">الأداء</a>
+            <a href="#tech" class="block text-slate-600">المواصفات</a>
+            <a href="#warranty" class="block text-slate-600">الضمان</a>
+            <a href="#contact" class="block text-slate-600">تواصل</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-white py-16 lg:py-24 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="mb-8 flex justify-center">
+                 <img src="https://i.ibb.co/93vmymGb/image.png" alt="شعار عبدالعزيز العاصي القابضة" class="h-32 w-auto max-w-full" onerror="this.src='https://via.placeholder.com/200x100?text=COMPANY+LOGO'">
+            </div>
+            <div class="inline-block bg-sky-50 text-sky-700 px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-6 border border-sky-100">
+                بواسطة عبدالعزيز العاصي القابضة
+            </div>
+            <h1 class="text-5xl lg:text-7xl font-black text-slate-900 mb-6 tracking-tight">C360N</h1>
+            <p class="text-xl lg:text-2xl text-slate-500 max-w-3xl mx-auto leading-relaxed font-light mb-10 px-4">
+                الحل الأذكى لغسيل السيارات بتقنية الذراع الدوار <span class="font-bold text-sky-600">360 درجة</span>. كفاءة ميكانيكية فائقة ودقة استشعار متناهية دون ملامسة الهيكل.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 px-4">
+                <a href="#tech" class="w-full sm:w-auto bg-sky-600 text-white px-10 py-4 rounded-2xl font-bold shadow-xl shadow-sky-200 hover:bg-sky-700 transition-all flex items-center justify-center gap-2">
+                    المواصفات الفنية
+                </a>
+                <a href="https://wa.me/966554714007" target="_blank" class="w-full sm:w-auto bg-emerald-600 text-white px-10 py-4 rounded-2xl font-bold hover:bg-emerald-700 transition-all flex items-center justify-center gap-2">
+                    تواصل واتساب 💬
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Data Dashboard -->
+    <section id="dashboard" class="py-16 container mx-auto px-4 text-right">
+        <div class="mb-10">
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">لوحة كفاءة الأداء</h2>
+            <p class="text-slate-500">مقارنة تحليلية توضح مدى توفير الموارد وزيادة الربحية باستخدام موديل C360N.</p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-100">
+                <h3 class="text-xl font-bold mb-8 flex items-center gap-2 text-slate-700">📊 كفاءة الموارد لكل دورة غسيل</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="flex flex-col items-center">
+                        <span class="text-sm text-slate-400 mb-2 font-bold uppercase">استهلاك المياه</span>
+                        <div class="chart-container"><canvas id="waterUsageChart"></canvas></div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span class="text-sm text-slate-400 mb-2 font-bold uppercase">استهلاك الكهرباء</span>
+                        <div class="chart-container"><canvas id="powerUsageChart"></canvas></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-slate-900 text-white p-8 rounded-3xl shadow-lg flex flex-col justify-between overflow-hidden relative">
+                <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl">📈</div>
+                <div class="relative z-10">
+                    <h3 class="text-2xl font-bold mb-6 text-sky-400">الإنتاجية</h3>
+                    <div class="space-y-6">
+                        <div class="flex justify-between items-end border-b border-slate-700 pb-2">
+                            <span class="text-slate-400">سرعة الغسيل</span>
+                            <span class="text-3xl font-black">3-8 <span class="text-sm font-normal">دقائق</span></span>
+                        </div>
+                        <div class="flex justify-between items-end border-b border-slate-700 pb-2">
+                            <span class="text-slate-400">ضغط المياه</span>
+                            <span class="text-3xl font-black">100 <span class="text-sm font-normal">بار</span></span>
+                        </div>
+                        <div class="flex justify-between items-end border-b border-slate-700 pb-2">
+                            <span class="text-slate-400">قوة التجفيف</span>
+                            <span class="text-3xl font-black">16 <span class="text-sm font-normal">kW</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 text-xs text-slate-400 bg-white/5 p-4 rounded-xl">
+                    * صُممت هذه الماكينة لتعمل بكفاءة عالية على مدار 24 ساعة، مما يضمن تدفقاً مستمراً للأرباح مع أقل قدر من الهدر.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specs Section -->
+    <section id="tech" class="py-20 container mx-auto px-4 text-right">
+        <div class="mb-16">
+            <h2 class="text-3xl font-black text-slate-900 mb-2">المواصفات الهيكلية والميكانيكية</h2>
+            <p class="text-slate-500">تم تصميم الموديل C360N ليدوم طويلاً مع أقل متطلبات صيانة ممكنة.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="feature-card bg-white p-8 rounded-3xl border border-slate-100">
+                <div class="text-4xl mb-4 text-sky-600">🏗️</div>
+                <h4 class="font-black text-lg mb-3">Stainless Steel 304</h4>
+                <p class="text-sm text-slate-500 leading-relaxed">استخدام الستانلس ستيل 304 في كافة أجزاء حقن المياه والمراوح لضمان مقاومة قصوى للصدأ والتآكل الكيميائي.</p>
+            </div>
+            <div class="feature-card bg-white p-8 rounded-3xl border border-slate-100">
+                <div class="text-4xl mb-4 text-sky-600">🌪️</div>
+                <h4 class="font-black text-lg mb-3">تجفيف 16 كيلو واط</h4>
+                <p class="text-sm text-slate-500 leading-relaxed">نظام تجفيف مدمج مكون من 4 مراوح توربينية عالية الأداء تتبع منحنيات السيارة لنتائج تجفيف مذهلة.</p>
+            </div>
+            <div class="feature-card bg-white p-8 rounded-3xl border border-slate-100">
+                <div class="text-4xl mb-4 text-sky-600">📡</div>
+                <h4 class="font-black text-lg mb-3">نظام SMA 3D</h4>
+                <p class="text-sm text-slate-500 leading-relaxed">أحدث تقنيات الاستشعار ثلاثي الأبعاد مع مستشعرات فوق صوتية لقراءة أبعاد السيارة بدقة مليمترية.</p>
+            </div>
+            <div class="feature-card bg-white p-8 rounded-3xl border border-slate-100">
+                <div class="text-4xl mb-4 text-sky-600">⚙️</div>
+                <h4 class="font-black text-lg mb-3">تحكم PLC ثنائي</h4>
+                <p class="text-sm text-slate-500 leading-relaxed">وحدة معالجة مركزية ثنائية النواة تضمن سرعة استجابة فائقة وإدارة ذكية لكل المحركات بنظام رقمي.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Warranty & Support -->
+    <section id="warranty" class="py-16 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-right">
+            <div>
+                <h2 class="text-4xl font-black text-slate-900 mb-6 italic">الضمان والدعم الفني</h2>
+                <div class="space-y-4">
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border-r-8 border-emerald-500">
+                        <p class="font-bold text-lg text-slate-800 mb-1">ضمان لمدة عامين كاملين</p>
+                        <p class="text-sm text-slate-500 leading-relaxed">يشمل الضمان المكونات الأساسية: المضخة، الهيكل، ووحدة التحكم PLC، لضمان استقرار استثمارك.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border-r-8 border-sky-500">
+                        <p class="font-bold text-lg text-slate-800 mb-1">تركيب وتدريب مجاني</p>
+                        <p class="text-sm text-slate-500 leading-relaxed">يقوم فريقنا الهندسي بتركيب الجهاز وتدريب طاقم العمل لديكم على التشغيل والصيانة اليومية.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border-r-8 border-indigo-500">
+                        <p class="font-bold text-lg text-slate-800 mb-1">عقد صيانة مجانية (جدة)</p>
+                        <p class="text-sm text-slate-500 leading-relaxed">نقدم لعملائنا في مدينة جدة عقود صيانة دورية مجانية للسنة الأولى لضمان استمرارية العمل.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-slate-800 text-white p-8 rounded-3xl shadow-xl relative overflow-hidden">
+                <div class="absolute -top-10 -left-10 w-40 h-40 bg-sky-500/20 rounded-full blur-3xl"></div>
+                <h4 class="font-black text-xl mb-8 text-sky-400">متطلبات التخطيط والموقع</h4>
+                <div class="space-y-5 text-sm">
+                    <div class="flex justify-between border-b border-slate-700 pb-3 items-center">
+                        <span class="text-slate-400">أبعاد الجهاز المطلوبة:</span> 
+                        <span class="font-bold ltr-text bg-slate-700 px-3 py-1 rounded">7.0m × 4.0m × 3.3m</span>
+                    </div>
+                    <div class="flex justify-between border-b border-slate-700 pb-3 items-center">
+                        <span class="text-slate-400">أقصى حجم للسيارة:</span> 
+                        <span class="font-bold ltr-text bg-slate-700 px-3 py-1 rounded">5.5m × 2.0m × 2.0m</span>
+                    </div>
+                    <div class="flex justify-between border-b border-slate-700 pb-3 items-center">
+                        <span class="text-slate-400">متطلبات الطاقة الكهربائية:</span> 
+                        <span class="font-bold ltr-text bg-slate-700 px-3 py-1 rounded">35kW / 380V / 3Ph</span>
+                    </div>
+                    <div class="mt-6 p-4 bg-slate-900/50 rounded-2xl border border-slate-700 text-xs text-slate-400 leading-relaxed">
+                        <span class="text-sky-400 font-bold block mb-1">💡 معلومة للمستثمر:</span>
+                        تمنحك شركة عبدالعزيز العاصي القابضة حرية اختيار المواد الكيميائية (شامبو/شمع) التي تناسب ميزانيتكم، مع تقديم توصياتنا لأفضل الأنواع المتوفرة بالسوق.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <footer id="contact" class="bg-white py-16 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-black mb-10 text-slate-900">تواصل مع قسم المبيعات</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <a href="tel:+966554714007" class="p-6 bg-slate-50 rounded-3xl hover:bg-sky-50 transition-all border border-transparent hover:border-sky-200">
+                    <div class="text-4xl mb-3">📞</div>
+                    <p class="font-bold text-slate-900 mb-1">الهاتف المباشر</p>
+                    <p class="text-sky-600 text-sm font-bold ltr-text">+966 55 471 4007</p>
+                </a>
+                <a href="https://wa.me/966554714007" target="_blank" class="p-6 bg-slate-50 rounded-3xl hover:bg-emerald-50 transition-all border border-transparent hover:border-emerald-200">
+                    <div class="text-4xl mb-3">💬</div>
+                    <p class="font-bold text-slate-900 mb-1">خدمة واتساب</p>
+                    <p class="text-emerald-600 text-sm font-bold ltr-text">+966 55 471 4007</p>
+                </a>
+                <a href="mailto:aacom.info@gmail.com" class="p-6 bg-slate-50 rounded-3xl hover:bg-indigo-50 transition-all border border-transparent hover:border-indigo-200">
+                    <div class="text-4xl mb-3">✉️</div>
+                    <p class="font-bold text-slate-900 mb-1">البريد الإلكتروني</p>
+                    <p class="text-indigo-600 text-sm font-bold ltr-text">aacom.info@gmail.com</p>
+                </a>
+            </div>
+            <div class="pt-10 border-t border-slate-100">
+                <p class="text-slate-400 text-sm font-bold">عبدالعزيز العاصي القابضة - الريادة في حلول الغسيل الذكية</p>
+                <p class="text-slate-300 text-[10px] mt-2 font-bold uppercase tracking-widest">© 2026 All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // تهيئة الرسوم البيانية عند تحميل الصفحة
+        document.addEventListener("DOMContentLoaded", () => {
+            Chart.defaults.font.family = "'Tajawal', sans-serif";
+            
+            // الرسم البياني للمياه (Doughnut)
+            const waterCtx = document.getElementById('waterUsageChart').getContext('2d');
+            new Chart(waterCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['استهلاك C360N (94 لتر)', 'توفير مائي'],
+                    datasets: [{ 
+                        data: [94, 106], 
+                        backgroundColor: ['#0284c7', '#f1f5f9'], 
+                        borderWidth: 0,
+                        hoverOffset: 10
+                    }]
+                },
+                options: { 
+                    maintainAspectRatio: false,
+                    cutout: '75%', 
+                    plugins: { 
+                        legend: { 
+                            position: 'bottom',
+                            labels: { padding: 20, boxWidth: 12, font: { size: 12, weight: 'bold' } }
+                        } 
+                    } 
+                }
+            });
+
+            // الرسم البياني للكهرباء (Bar)
+            const powerCtx = document.getElementById('powerUsageChart').getContext('2d');
+            new Chart(powerCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['الوضع القياسي', 'الوضع الناعم'],
+                    datasets: [{ 
+                        label: 'كيلو واط/ساعة لكل سيارة', 
+                        data: [0.52, 0.99], 
+                        backgroundColor: ['#0284c7', '#6366f1'],
+                        borderRadius: 8,
+                        barThickness: 40
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { 
+                            beginAtZero: true, 
+                            grid: { color: '#f1f5f9' },
+                            title: { display: true, text: 'kWh', font: { weight: 'bold' } }
+                        },
+                        x: { grid: { display: false } }
+                    },
+                    plugins: { 
+                        legend: { display: false } 
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
